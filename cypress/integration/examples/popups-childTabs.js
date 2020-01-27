@@ -24,7 +24,13 @@ describe('PopUps and Child Tabs TestSet', function() {
     it('Child Tab management testCase', function() {
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
         //remove attribute "target" to avoid child tab
+        cy.url().should('include', 'AutomationPractice')
         cy.get('#opentab').invoke('removeAttr', 'target').click()
+        // go back to first webpage
+        cy.wait(2000)
+        cy.url().should('include', 'index')
+        cy.go('back')        
+        cy.url().should('include', 'AutomationPractice')
     })
 
 

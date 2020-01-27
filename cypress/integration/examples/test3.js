@@ -30,6 +30,20 @@ describe('Test set 3' , function() {
         cy.get('#displayed-text').should('be.visible')
     })
     it('radio-Button TestCase', function() {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
         cy.get('[value="radio2"]').check().should('be.checked')
+    })
+    it('webTable testCase', function() {
+        //validate price for a course
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.get('tr td:nth-child(2)').each(($el, index) => {
+            const courseText = $el.text()
+            if(courseText.includes("Python")) {
+                cy.get('tr td:nth-child(2)').eq(index).next().then(function(coursePrice) {
+                    const price = coursePrice.text()
+                    expect(price).to.equal('25')
+                })                
+            }
+        })
     })
 })
