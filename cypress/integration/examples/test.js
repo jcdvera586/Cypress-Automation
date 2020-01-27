@@ -29,7 +29,4 @@ describe('My First Test', function() {
             }
         })
     })
-    it('Logo', function() {
-        const logo = cy.get()
-    })
 })

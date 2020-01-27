@@ -21,4 +21,15 @@ describe('Test set 3' , function() {
         })
         cy.get('input#autocomplete').should('have.value', 'India')
     })
+    it('Test visible-invisible Objects', function() {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.get('#displayed-text').should('be.visible')
+        cy.get('#hide-textbox').click()
+        cy.get('#displayed-text').should('not.be.visible')
+        cy.get('#show-textbox').click()
+        cy.get('#displayed-text').should('be.visible')
+    })
+    it('radio-Button TestCase', function() {
+        cy.get('[value="radio2"]').check().should('be.checked')
+    })
 })
