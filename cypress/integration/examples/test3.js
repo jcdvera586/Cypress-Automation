@@ -46,4 +46,15 @@ describe('Test set 3' , function() {
             }
         })
     })
+    it('Mouse Hover TestCase', function() {
+        cy.eventNames('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.get('.mouse-hover').find('div.mouse-hover-content').invoke('show')
+        cy.contains('Top').click()
+        cy.url().should('include', 'top')
+    })
+    it('Forcing click Invisible button', function() {
+        cy.eventNames('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.contains('Top').click({force: true})
+        cy.url().should('include', 'top')
+    })
 })
