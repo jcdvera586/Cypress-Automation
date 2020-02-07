@@ -33,5 +33,14 @@ describe('PopUps and Child Tabs TestSet', function() {
         cy.url().should('include', 'AutomationPractice')
     })
 
+    it('Child Window management testCase', function() {
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.get('#opentab').then(function(element) {
+            const url = element.prop('href')
+            cy.visit(url)
+        })
+
+    })
+
 
 })
