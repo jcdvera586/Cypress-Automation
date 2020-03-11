@@ -1,5 +1,8 @@
 /// <reference types="Cypress" />
 
+import HomePage from '../pageObjects/HomePage'
+import ProductPage from '../pageObjects/ProductPage'
+
 describe('Framework test cases', function() {
 
     beforeEach(function() {
@@ -12,17 +15,20 @@ describe('Framework test cases', function() {
     })
 
     it('first TestFramework testcase', function() {
+        const homePage = new HomePage()
         cy.visit('https://www.rahulshettyacademy.com/angularpractice/')
-        cy.get('input[name="name"]:nth-child(2)').type(this.data.name)
-        cy.get('select').select(this.data.gender)
-        cy.get('input[name="name"]:nth-child(1)').should('have.value', this.data.name)
-        cy.get('input[name="name"]:nth-child(2)').should('have.attr', 'minlength', '2')
-        cy.get('#inlineRadio3').should('be.disabled')
+        homePage.getEditBox().type(this.data.name)
+        homePage.getGender().select(this.data.gender)
+        homePage.getTwoWayDataBinding().should('have.value', this.data.name)
+        homePage.getEditBox().should('have.attr', 'minlength', '2')
+        homePage.getEnterpreneaur().should('be.disabled')
     })
 
     it('shop testCase', function() {
+        const homePage = new HomePage()
+        const productPage = new ProductPage()
         cy.visit('https://www.rahulshettyacademy.com/angularpractice/')
-        cy.get(':nth-child(2) > .nav-link').click()
+        homePage.getShopTab().click()
 
         // var productos = this.products
         // this.products.productName.forEach(function(element) {
@@ -32,7 +38,8 @@ describe('Framework test cases', function() {
         this.productos.productName.forEach(element => {
             cy.selectProduct(element)
         });
-        
+
+        productPage.getCheckoutButton().click()      
         
     })
 })
