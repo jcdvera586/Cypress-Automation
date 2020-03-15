@@ -2,6 +2,8 @@
 
 import HomePage from '../pageObjects/HomePage'
 import ProductPage from '../pageObjects/ProductPage'
+import CheckoutPage from '../pageObjects/CheckoutPage'
+import DeliveryPage from '../pageObjects/DeliveryPage'
 
 describe('Framework test cases', function() {
 
@@ -27,19 +29,26 @@ describe('Framework test cases', function() {
     it('shop testCase', function() {
         const homePage = new HomePage()
         const productPage = new ProductPage()
+        const checkoutPage = new CheckoutPage()
+        const deliveryPage = new DeliveryPage()
+
         cy.visit('https://www.rahulshettyacademy.com/angularpractice/')
         homePage.getShopTab().click()
-
-        // var productos = this.products
-        // this.products.productName.forEach(function(element) {
-        //     cy.selectProduct(element)
-        // });
-
+         
         this.productos.productName.forEach(element => {
             cy.selectProduct(element)
         });
 
-        productPage.getCheckoutButton().click()      
+        productPage.getCheckoutButton().click()
+        
+        checkoutPage.getConfirmCheckoutButton().click()
+
+        deliveryPage.getCountryTextBox().type(this.productos.deliveryCountry)
+        cy.wait(2000)
+        cy.get('.suggestions a').click()
+        deliveryPage.getCheckTermsAgreement().click()
+        deliveryPage.getPurchaseButton().click()
+        cy.get('.alert').should('contain', 'Success!')
         
     })
 })
