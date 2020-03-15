@@ -44,7 +44,7 @@ describe('Framework test cases', function() {
         checkoutPage.getConfirmCheckoutButton().click()
 
         deliveryPage.getCountryTextBox().type(this.productos.deliveryCountry)
-        cy.wait(2000)
+        // cy.wait(2000)
         cy.get('.suggestions a').click()
         deliveryPage.getCheckTermsAgreement().click()
         deliveryPage.getPurchaseButton().click()
