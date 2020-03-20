@@ -65,7 +65,7 @@ describe('Framework test cases', function() {
         deliveryPage.getCountryTextBox().type(this.productos.deliveryCountry)
     
         cy.get('.suggestions a').click()
-        deliveryPage.getCheckTermsAgreement().click()
+        deliveryPage.getCheckTermsAgreement().click({force:true})
         deliveryPage.getPurchaseButton().click()
         cy.get('.alert').should('contain', 'Success!') //forma 1 de valdiar
         
