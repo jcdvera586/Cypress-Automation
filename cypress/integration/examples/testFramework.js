@@ -18,7 +18,7 @@ describe('Framework test cases', function() {
 
     it('first TestFramework testcase', function() {
         const homePage = new HomePage()
-        cy.visit('https://www.rahulshettyacademy.com/angularpractice/')
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("angular"))
         homePage.getEditBox().type(this.data.name)
         homePage.getGender().select(this.data.gender)
         homePage.getTwoWayDataBinding().should('have.value', this.data.name)
@@ -42,7 +42,24 @@ describe('Framework test cases', function() {
         });
 
         productPage.getCheckoutButton().click()
-        
+
+        var sum=0
+        //TODO:Crear Custom Method para este suma de precios
+        cy.get('tr td:nth-child(4) strong').each(($el, index) => {
+            const price = $el.text()
+            var priceText = price.split(" ")
+            priceText = priceText[1].trim()
+            sum=Number(sum)+Number(priceText)
+        }).then(function() {
+            cy.log(sum)
+        })
+
+        cy.get('h3 strong').then(function(element) {
+            var total = element.text().split(" ")
+            total = total[1].trim()
+            expect(Number(total)).to.equal(sum)
+        })
+
         checkoutPage.getConfirmCheckoutButton().click()
 
         deliveryPage.getCountryTextBox().type(this.productos.deliveryCountry)
@@ -50,7 +67,12 @@ describe('Framework test cases', function() {
         cy.get('.suggestions a').click()
         deliveryPage.getCheckTermsAgreement().click()
         deliveryPage.getPurchaseButton().click()
-        cy.get('.alert').should('contain', 'Success!')
+        cy.get('.alert').should('contain', 'Success!') //forma 1 de valdiar
+        
+        cy.get('.alert').then(function(element) {
+            const actualText = element.text()
+            expect(actualText.includes('Success')).to.be.true //forma 2 de validar
+        })
         
     })
 })

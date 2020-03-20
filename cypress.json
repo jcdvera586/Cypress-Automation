@@ -1,4 +1,10 @@
 {
     "defaultCommandTimeout": 6000,
-    "pageLoadTimeout": 10000
+    "pageLoadTimeout": 10000,
+    "env": {
+        "baseUrl": "https://www.rahulshettyacademy.com",
+        "selenium": "/seleniumPractise/#/",
+        "angular": "/angularpractice/",
+        "automation": "/AutomationPractice/"
+    }
 }
