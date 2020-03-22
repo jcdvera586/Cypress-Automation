@@ -2,7 +2,7 @@
 
 describe('My second Test Suite', function() {
     it('shoping element', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"))
         cy.get('.search-keyword').type('ca')
         cy.wait(2000)
 

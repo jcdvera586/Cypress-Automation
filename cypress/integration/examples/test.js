@@ -2,7 +2,7 @@
 
 describe('My First Test', function() {
     it('My First TestCase', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"));
         cy.get('.search-keyword').type('ca');
         cy.wait(2000);
         //cy.get('.product:visible').should('have.length',4);
@@ -11,13 +11,13 @@ describe('My First Test', function() {
         cy.get('.products').find('.product').eq(2).contains('ADD TO CART').click();
     })
     it('My Second TestCase', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"));
         cy.get('.search-keyword').type('ca');
         cy.wait(2000);
         cy.get('.product:visible').should('have.length',4);
     })
     it('Search product by name', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"));
         cy.get('.search-keyword').type('ca');
         cy.wait(2000);
         cy.get('.products').find('.product').should('have.length',4);

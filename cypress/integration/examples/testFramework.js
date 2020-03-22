@@ -1,9 +1,9 @@
 /// <reference types="Cypress" />
 
-import HomePage from '../pageObjects/HomePage'
-import ProductPage from '../pageObjects/ProductPage'
-import CheckoutPage from '../pageObjects/CheckoutPage'
-import DeliveryPage from '../pageObjects/DeliveryPage'
+import HomePage from '../../support/pageObjects/HomePage'
+import ProductPage from '../../support/pageObjects/ProductPage'
+import CheckoutPage from '../../support/pageObjects/CheckoutPage'
+import DeliveryPage from '../../support/pageObjects/DeliveryPage'
 
 describe('Framework test cases', function() {
 
@@ -34,7 +34,7 @@ describe('Framework test cases', function() {
 
         Cypress.config('defaultCommandTimeout', 8000)
 
-        cy.visit('https://www.rahulshettyacademy.com/angularpractice/')
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("angular"))
         homePage.getShopTab().click()
          
         this.productos.productName.forEach(element => {

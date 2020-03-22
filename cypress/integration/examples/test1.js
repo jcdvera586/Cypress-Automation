@@ -2,7 +2,7 @@
 
 describe('My First Test Suite', function() {
     it('My First testCase', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"));
         cy.get('.search-keyword').type('ca');
         cy.wait(2000)
 
@@ -15,7 +15,7 @@ describe('My First Test Suite', function() {
         })
     })
     it('Second TestCase', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"));
         cy.get('.search-keyword').type('ca');
         cy.wait(2000)
 
@@ -26,7 +26,7 @@ describe('My First Test Suite', function() {
         })
     })
     it('using Alias', function() {
-        cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/")
+        cy.visit(Cypress.env("baseUrl")+Cypress.env("selenium"))
         cy.get('.search-keyword').type('ca')
         cy.wait(2000)
 
