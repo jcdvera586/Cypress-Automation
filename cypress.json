@@ -1,10 +1,18 @@
 {
-    "defaultCommandTimeout": 6000,
-    "pageLoadTimeout": 20000,
-    "env": {
-        "baseUrl": "https://www.rahulshettyacademy.com",
-        "selenium": "/seleniumPractise/#/",
-        "angular": "/angularpractice/",
-        "automation": "/AutomationPractice/"
-    }
+  "defaultCommandTimeout": 6000,
+  "pageLoadTimeout": 20000,
+  "env": {
+    "baseUrl": "https://www.rahulshettyacademy.com",
+    "selenium": "/seleniumPractise/#/",
+    "angular": "/angularpractice/",
+    "automation": "/AutomationPractice/"
+  },
+  "projectId": "rhuv1v", 
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  }
 }

@@ -13,7 +13,7 @@ describe('My second Test Suite', function() {
                 $el.find('button').click()
             }
         })
-
+        Cypress.config('chromeWebSecurity', false)        
         cy.get('.cart-icon').click()
         cy.contains('PROCEED TO CHECKOUT').click()
         cy.contains('Place Order').click()

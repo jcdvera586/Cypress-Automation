@@ -19,9 +19,9 @@ describe('My First Test Suite', function() {
         cy.get('.search-keyword').type('ca');
         cy.wait(2000)
 
-        cy.get('.brand > a > img').should('have.text', '')
+        cy.get('.brand').should('have.text', 'GREENKART')
 
-        cy.get('.brand > a > img').then(function(logoelement){
+        cy.get('.brand').then(function(logoelement){
             cy.log(logoelement.text())
         })
     })
